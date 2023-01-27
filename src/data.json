@@ -38,5 +38,10 @@
       "url": "https://images.unsplash.com/photo-1598790557694-a1cd9fedb32b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max", 
       "photographer": "markcjn",
       "location": "Penang, Malaysia"
+    },
+    {
+      "location": "Yosemite Valley, United States",
+      "url": "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max",
+      "photographer": "thejoltjoker"
     }
   ]
