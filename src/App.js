@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import base64 from 'base64-js';
 import axios from "axios";
-import './App.css';
+import './styles.css';
 import data from './data.json';
+import poi_categories from './poi_categories.json';
+import Home from "./Home";
+
 
 function App() {
-  const [photos, setPhotos] = useState(data);
+  const [photos, _] = useState(data);
   const [selectedImage, setSelectedImage] = useState(null);
   const [poiList, setPoiList] = useState([]);
   const [inference, setInference] = useState(null);
@@ -16,7 +18,30 @@ function App() {
       const res = await axios.get(
         `https://api.tomtom.com/search/2/poiSearch/${selectedImage.location}.json?limit=10&key=${process.env.REACT_APP_TOMTOM_API_KEY}`
       );
-      setPoiList(res.data.results);
+
+      const filteredResults = res.data.results
+        .filter(result => result.poi.categories.some(category => poi_categories.includes(category)))
+        .map(result => ({
+          id: result.id,
+          name: result.poi.name,
+          categories: new Set(result.poi.categories.filter(category => poi_categories.includes(category)))
+        }))
+        .reduce((acc, curr) => {
+          const key = curr.name;
+          if (!acc[key]) {
+            acc[key] = {
+              name: key,
+              categories: curr.categories
+            };
+          } else {
+            curr.categories.forEach( category => acc[key].categories.add(category));
+          }
+          return acc;
+        }, {});
+
+      const items = Object.values(filteredResults)
+      setPoiList(items);
+      console.log({ items });
     }
     fetchPoi();
   }, [selectedImage]);
@@ -48,53 +73,7 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Bird Gallery</h1>
-      {selectedImage && (
-        <div>
-          <img src={selectedImage.url} />
-          <p>
-            <span>by </span>
-            <a href={`https://unsplash.com/@${selectedImage.photographer}`}>{selectedImage.photographer}</a>
-            <br />
-            {selectedImage.location}
-          </p>
-        </div>
-      )}
-      {/* Check if POI categories include: 
-        important tourist attraction 
-        natural tourist attraction 
-        forest area
-        park recreation area
-        park
-        arboreta botanical gardens
-      */}
-      {poiList.length > 0 && (
-        <div>
-          <h2>Points of Interest</h2>
-          <ul>
-            {poiList.map((poi) => (
-              <li key={poi.id}>{poi.poi.categories}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {inference !== null && (
-        <div>
-          <h4>Is it a bird?</h4>
-          <p>{inference.label === 'bird' ? 'Yes!' : `No! It's a ${inference.confidences[0].label}!`}</p>
-          {/* Add "...I guess" to low confidence <75% */}
-          <p>Confidence: {(inference.confidences[0].confidence * 100).toFixed(1)}%</p>
-        </div>
-      )}
-      <div className="grid-container">
-        {photos.map((photo, index) => (
-          <div key={index} className="grid-item">
-            <img src={photo.url} onClick={() => setSelectedImage(photo)} />
-          </div>
-        ))}
-      </div>
-    </div>
+      <Home />
   );
 }
 

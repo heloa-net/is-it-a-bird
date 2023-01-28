@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+.App-link {
+  color: #61dafb;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.grid-item {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+.svg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.square {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 400px;
+  /* background-color: #61dafb; */
+  border: 0.5em solid #61dafb;
+}
+
+svg {
+  width: 700px;
+  height: 700px;
+}
