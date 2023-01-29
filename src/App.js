@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./Home";
+import ComputerScreen from "./ComputerScreen";
 
 function App() {
 
   return (
-      <Home />
+      <ComputerScreen />
   );
 }
 
