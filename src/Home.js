@@ -4,7 +4,7 @@ import './styles.css';
 const Home = () => {
     return (
         <div className='container'>
-        <svg viewBox="0 0 217 217">
+            <svg className='screen-svg' viewBox="0 0 217 217">
                 <g transform="translate(0.000000,217.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                     <path d="M487 2153 c-2 -1 -292 -13 -333 -13 -22 0 -75 -43 -91 -75 -30 -57
                 -44 -432 -44 -1135 1 -461 5 -513 44 -574 26 -39 87 -48 321 -50 119 0 216 -4
