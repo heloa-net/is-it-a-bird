@@ -1,10 +1,41 @@
-import React from "react";
-import './styles.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import './Gallery.css';
+import data from './data.json';
 
 const Gallery = () => {
+  const [photos, _] = useState(data);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [inference, setInference] = useState(null);
+
+  useEffect(() => {
+    async function fetchInference() {
+      if (!selectedImage) return;
+      const base64Image = await getBase64Url(selectedImage.url);
+      const payload = {
+        data: [base64Image],
+      };
+      const res = await axios.post("https://heloa-fastai-nature-classifier.hf.space/api/predict", payload);
+      setInference(res.data.data[0]);
+    }
+    fetchInference();
+  }, [selectedImage]);
+
+  const getBase64Url = (url) => {
+    return fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.onloadend = () => resolve(reader.result)
+          reader.onerror = reject
+          reader.readAsDataURL(blob)
+        })
+      })
+  }
+
   return (
     <div>
-      <h1>Bird Gallery</h1>
       {selectedImage && (
         <div>
           <img src={selectedImage.url} />
@@ -14,24 +45,6 @@ const Gallery = () => {
             <br />
             {selectedImage.location}
           </p>
-        </div>
-      )}
-      {poiList.length > 0 && (
-        <div>
-          <h2>Points of Interest</h2>
-          <ul>
-            {poiList.map((poi) => (
-              <div key={poi.id}>
-                <li key={poi.name}>{poi.name}</li>
-                {
-                  Array.from(poi.categories).map((category, index) => {
-                    return (<li key={category}>{category}</li>)
-                  }
-                  )
-                }
-              </div>
-            ))}
-          </ul>
         </div>
       )}
       {inference !== null && (
