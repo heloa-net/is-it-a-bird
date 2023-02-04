@@ -1,8 +1,6 @@
 import React from 'react';
-import Gallery from './Gallery';
-import data from './data.json';
+import { Outlet, Link } from "react-router-dom";
 import './ComputerScreen.css';
-import SelectedImage from './SelectedImage';
 
 const ComputerScreen = () => {
   return (
@@ -35,13 +33,10 @@ const ComputerScreen = () => {
       </svg>
       <div className='square'>
         <div className='container'>
-
-          <Gallery photos={data} />
-          
-          {/* <SelectedImage /> */}
+          <Outlet />
         </div>
-
       </div>
+      <Link to="/">Home</Link>
     </div>
   );
 }
