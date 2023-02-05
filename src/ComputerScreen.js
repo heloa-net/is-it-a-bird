@@ -36,7 +36,7 @@ const ComputerScreen = () => {
           <Outlet />
         </div>
       </div>
-      <Link to="/">Home</Link>
+      <Link to="/home">Home</Link>
     </div>
   );
 }

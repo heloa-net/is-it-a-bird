@@ -1,16 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import App from './App';
+import ComputerScreen from './ComputerScreen';
+import Home from './Home';
 import reportWebVitals from './reportWebVitals';
+import Gallery from './Gallery';
+import data from './data.json'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <ComputerScreen />,
+    loader: null,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+        loader: null,
+      },
+      {
+        path: "gallery",
+        element: <Gallery photos={data} />,
+        loader: null
+      }
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
