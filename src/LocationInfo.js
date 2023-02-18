@@ -7,9 +7,9 @@ const LocationInfo = ({ poiList = [] }) => {
         <div>
           <h2>Points of Interest</h2>
           <ul>
-            {poiList.map((poi) => (
-              <div key={poi.id}>
-                <li key={poi.name}>{poi.name}</li>
+            {poiList.map((poi, index) => (
+              <div key={index}>
+                <li key={index}>{poi.name}</li>
                 {
                   Array.from(poi.categories).map((category, index) => {
                     return (<li key={category}>{category}</li>)
