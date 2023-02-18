@@ -6,8 +6,10 @@ import data from './data.json';
 import SelectedImage from './SelectedImage';
 import LocationInfo from "./LocationInfo";
 import poi_categories from './poi_categories.json';
+import Home from "./Home";
 
 function App() {
+  const [currentScreen, setCurrentScreen] = useState('home');
   const [selectedImage, setSelectedImage] = useState(null);
   const [inference, setInference] = useState(null);
   const [poiList, setPoiList] = useState([]);
@@ -75,14 +77,18 @@ function App() {
       })
   }
 
+  const screens = {
+    home: <Home setScreen={setCurrentScreen} />,
+    result: (<>
+      <LocationInfo poiList={poiList} />
+      <SelectedImage selectedImage={selectedImage} inference={inference} />
+    </>),
+    gallery: <Gallery photos={data} onSelect={setSelectedImage} setScreen={setCurrentScreen} />,
+  }
+
   return (
     <ComputerScreen>
-      {inference
-        ? <>
-          <LocationInfo poiList={poiList} />
-          <SelectedImage selectedImage={selectedImage} inference={inference} />
-        </>
-        : <Gallery photos={data} onSelect={setSelectedImage} />}
+      {screens[currentScreen]}
     </ComputerScreen>
   );
 }
