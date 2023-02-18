@@ -1,10 +1,8 @@
 import React from 'react';
-import Gallery from './Gallery';
-import data from './data.json';
 import './ComputerScreen.css';
-import SelectedImage from './SelectedImage';
 
-const ComputerScreen = () => {
+const ComputerScreen = ({ children }) => {
+
   return (
     <div className='container'>
       <svg className='screen-svg' viewBox="0 0 217 217">
@@ -35,10 +33,7 @@ const ComputerScreen = () => {
       </svg>
       <div className='square'>
         <div className='container'>
-
-          <Gallery photos={data} />
-          
-          {/* <SelectedImage /> */}
+          {children}
         </div>
 
       </div>
