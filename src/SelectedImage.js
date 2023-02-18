@@ -21,12 +21,10 @@ const SelectedImage = ({ image = SAMPLE, inference }) => {
   Credits
   */
 
-  console.log({ inference })
-
   return (
     <div>
-      <h1>Inference</h1>
-      <h2>{JSON.stringify(inference)}</h2>
+      <h1>SelectedImage</h1>
+      {/* <h2>{JSON.stringify(inference)}</h2> */}
 
       {/* {image && (
         <div>
