@@ -83,6 +83,14 @@ function App() {
       })
   }
 
+  const handleReset = () => {
+    setInference(null);
+    setSelectedImage(null);
+    setPoiList([]);
+    setCurrentScreen('home')
+  }
+
+
   const screens = {
     home: <Home setScreen={setCurrentScreen} />,
     // TODO: manage loading here
@@ -94,7 +102,7 @@ function App() {
   }
 
   return (
-    <ComputerScreen>
+    <ComputerScreen onReset={handleReset} currentScreen={currentScreen}>
       {screens[currentScreen]}
     </ComputerScreen>
   );

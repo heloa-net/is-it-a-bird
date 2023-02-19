@@ -1,7 +1,7 @@
 import React from 'react';
 import './ComputerScreen.css';
 
-const ComputerScreen = ({ children }) => {
+const ComputerScreen = ({ children, onReset, currentScreen }) => {
 
   return (
     <div className='container'>
@@ -34,6 +34,10 @@ const ComputerScreen = ({ children }) => {
       <div className='square'>
         <div className='container'>
           {children}
+          {
+            // currentScreen === 'home' &&
+            <button onClick={onReset}>Reset</button>
+          }
         </div>
 
       </div>
