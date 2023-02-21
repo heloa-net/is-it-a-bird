@@ -7,6 +7,7 @@ import LocationInfo from "./LocationInfo";
 import Home from "./Home";
 import data from './data.json';
 import poi_categories from './poi_categories.json';
+import './styles.css'
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState('home');

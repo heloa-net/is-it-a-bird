@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'xkcd-script';
+  /* TODO: check font in deployment */
+  src: url('../public/xkcd-script.woff');
+}
+
+p, span, h1, h2, h3, h4, button {
+  font-family: xkcd-script;
+}
+
 .homeContainer {
   display: flex;
   flex-direction: column;
@@ -8,3 +18,4 @@
   border: thin black solid;
   max-width: max-content;
 }
+
