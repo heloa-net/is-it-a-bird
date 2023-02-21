@@ -1,7 +1,8 @@
 import React from 'react';
 import './ComputerScreen.css';
+import icon from './shut-down.svg';
 
-const ComputerScreen = ({ children, onReset, currentScreen }) => {
+const ComputerScreen = ({ children, onReset }) => {
 
   return (
     <div className='container'>
@@ -34,12 +35,13 @@ const ComputerScreen = ({ children, onReset, currentScreen }) => {
       <div className='square'>
         <div className='container'>
           {children}
-          {
-            // currentScreen === 'home' &&
-            <button onClick={onReset}>Reset</button>
-          }
         </div>
-
+        <button onClick={onReset} className='restartButton'>
+          <img
+            className='restartImage'
+            src={icon}
+          />
+        </button>
       </div>
     </div>
   );
