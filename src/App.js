@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ComputerScreen from "./ComputerScreen";
 import Gallery from './Gallery';
-import SelectedImage from './SelectedImage';
-import LocationInfo from "./LocationInfo";
 import Home from "./Home";
 import Result from "./Result";
 import data from './data.json';
@@ -15,7 +13,6 @@ function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [inference, setInference] = useState(null);
   const [poiList, setPoiList] = useState([]);
-
 
   useEffect(() => {
     //
@@ -91,7 +88,6 @@ function App() {
     setPoiList([]);
     setCurrentScreen('home')
   }
-
 
   const screens = {
     home: <Home setScreen={setCurrentScreen} />,

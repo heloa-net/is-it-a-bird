@@ -7,12 +7,14 @@
 
 .heading {
   font-size: 2em;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
 .image-container {
   width: 150px;
   height: 150px;
+  min-width: 150px;
+  min-height: 150px;
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -25,7 +27,12 @@
 }
 
 p {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-size: 1em;
+  margin: 8px;
   text-align: center;
+}
+
+.subheading {
+  margin-bottom: 0;
+  font-size: 1.2em;
 }
