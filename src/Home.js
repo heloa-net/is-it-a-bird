@@ -3,9 +3,10 @@ import './styles.css';
 
 const Home = ({ setScreen }) => {
   return (
-    <div>
-      <h1>Home</h1>
-      <button onClick={() => setScreen('gallery')}>Pick image</button>
+    <div className="homeContainer">
+      <h1>IS IT A BIRD?</h1>
+      <button className="galleryButton" onClick={() => setScreen('gallery')}>
+        PICK IMAGE</button>
     </div>
   );
 }

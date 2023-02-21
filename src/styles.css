@@ -1,6 +1,10 @@
-.App {
-  text-align: center;
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.App-link {
-  color: #61dafb;
+
+.galleryButton {
+  border: thin black solid;
+  max-width: max-content;
 }
