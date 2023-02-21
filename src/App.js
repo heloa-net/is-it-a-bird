@@ -5,6 +5,7 @@ import Gallery from './Gallery';
 import SelectedImage from './SelectedImage';
 import LocationInfo from "./LocationInfo";
 import Home from "./Home";
+import Result from "./Result";
 import data from './data.json';
 import poi_categories from './poi_categories.json';
 import './styles.css'
@@ -95,10 +96,7 @@ function App() {
   const screens = {
     home: <Home setScreen={setCurrentScreen} />,
     // TODO: manage loading here
-    result: (<>
-      <LocationInfo poiList={poiList} />
-      <SelectedImage image={selectedImage} inference={inference} />
-    </>),
+    result: <Result poiList={poiList} inference={inference} image={selectedImage} />,
     gallery: <Gallery photos={data} onSelect={setSelectedImage} setScreen={setCurrentScreen} />,
   }
 
