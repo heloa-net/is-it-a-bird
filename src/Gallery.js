@@ -10,7 +10,7 @@ const Gallery = ({ photos, onSelect, setScreen }) => {
 
   return (
     <div className="grid-container">
-      {photos.slice(0, 8).map((photo, index) => (
+      {photos.slice(0, 9).map((photo, index) => (
         <div className="grid-item" key={index}>
           <img alt='' src={photo.url} onClick={() => handleClickPhoto(photo)} />
         </div>
