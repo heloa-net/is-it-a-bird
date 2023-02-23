@@ -2,7 +2,7 @@ import React from "react";
 import './Result.css'
 
 const Result = ({ onReset, image, inference, poiList }) => {
-  if (!inference) { return (<h1>LOADING...</h1>)}
+  if (!inference || !poiList.length) { return (<h1>LOADING...</h1>)}
 
   const { confidence } = inference.confidences.find(element => element.label === 'bird');
   let isBirdMessage = 'Let me think...';
