@@ -35,10 +35,10 @@ function App() {
     async function fetchPoi() {
       if (!selectedImage) return;
 
-      const response = await fetch('/.netlify/functions/points-of-interest?' + new URLSearchParams({
+      const response = await axios('/.netlify/functions/points-of-interest?' + new URLSearchParams({
         location: selectedImage.location,
       }))
-        .then((res) => res.json())
+        .then((res) => res.data)
         .catch((err) => console.error(err));
 
       const filteredResults = response.results
