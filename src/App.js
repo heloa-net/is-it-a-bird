@@ -98,7 +98,10 @@ function App() {
 
   return (
     <ComputerScreen onReset={handleReset} currentScreen={currentScreen}>
-      {screens[currentScreen]}
+      {!process.env.REACT_APP_TOMTOM_API_KEY
+        ? <h1>OFFLINE</h1>
+        : screens[currentScreen]
+      }
     </ComputerScreen>
   );
 }
