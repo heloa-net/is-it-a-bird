@@ -40,6 +40,7 @@ const ComputerScreen = ({ children, onReset }) => {
           <img
             className='restartImage'
             src={icon}
+            alt='restart app button'
           />
         </button>
       </div>
