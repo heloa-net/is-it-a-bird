@@ -7,6 +7,7 @@
 
 p, span, h1, h2, h3, h4, button {
   font-family: 'xkcd-script', 'Patrick Hand SC', sans-serif;
+  color: '#000'
 }
 
 .homeContainer {
