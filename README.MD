@@ -15,6 +15,7 @@ The app also uses [TomTom Search API](https://developer.tomtom.com/search-api/),
 ## Next steps
 
 - Quality (tests)
+- Responsive design
 - More xkcd graphics
 - Image uploading
 - Input location
